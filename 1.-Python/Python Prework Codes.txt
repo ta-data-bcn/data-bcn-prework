@@ -1,0 +1,329 @@
+The Snail and the Well
+-----------------------
+
+well_height = 125
+daily_distance = 30
+nightly_distance = 20
+snail_position = 0
+while snail_position + daily_distance < well_height:
+  snail_position = snail_position + (daily_distance - nightly_distance)
+days = (snail_position / 10) + 0.5
+print (days)
+
+
+******************************************************************************
+
+Duel of Sorcerers
+------------------
+
+A = [10, 11, 13, 30, 22, 11, 10, 33, 22, 22]
+B = [23, 66, 12, 43, 12, 10, 44, 23, 12, 17]
+if sum (A) > sum (B):
+  print ("Gandalf wins")
+elif sum (B) > sum (A):
+  print ("Saruman wins")
+else:
+  print ("Tie")
+print (sum(A))
+print (sum(B))
+
+
+
+Gandalf = [10, 11, 13, 30, 22, 11, 10, 33, 22, 22]
+Saruman = [23, 66, 12, 43, 12, 10, 44, 23, 12, 17]
+Gandalf_wins = 0
+Saruman_wins = 0
+
+if Gandalf[0] > Saruman [0]:
+  Gandalf_wins += 1
+else:
+  Saruman_wins += 1
+
+if Gandalf[1] > Saruman [1]:
+  Gandalf_wins += 1
+else:
+  Saruman_wins += 1
+
+if Gandalf[2] > Saruman [2]:
+  Gandalf_wins += 1
+else:
+  Saruman_wins += 1
+
+if Gandalf[3] > Saruman [3]:
+  Gandalf_wins += 1
+else:
+  Saruman_wins += 1
+
+if Gandalf[4] > Saruman [4]:
+  Gandalf_wins += 1
+else:
+  Saruman_wins += 1
+
+if Gandalf[5] > Saruman [5]:
+  Gandalf_wins += 1
+else:
+  Saruman_wins += 1
+
+if Gandalf[6] > Saruman [6]:
+  Gandalf_wins += 1
+else:
+  Saruman_wins += 1
+
+if Gandalf[7] > Saruman [7]:
+  Gandalf_wins += 1
+else:
+  Saruman_wins += 1
+
+if Gandalf[8] > Saruman [8]:
+  Gandalf_wins += 1
+else:
+  Saruman_wins += 1
+  
+if Gandalf[9] > Saruman [9]:
+  Gandalf_wins += 1
+else:
+  Saruman_wins += 1
+
+print ("Gandalf scores: ", Gandalf_wins)
+print ("Saruman scores: ", Saruman_wins)
+
+if Gandalf_wins > Saruman_wins:
+  print ("Gandalf wins")
+elif Saruman_wins > Gandalf_wins:
+  print ("Saruman wins")
+else:
+  print ("Tie")
+
+
+******************************************************************************
+
+Bus
+-----
+
+stops = [(10, 0), (4, 1), (3, 5), (3, 4), (5, 1), (1, 5), (5, 8), (4, 6), (2, 3)]
+total_stops = len(stops)
+print ("Total number of stops: ", total_stops)
+
+in_out = []
+for i, o in stops:
+  in_out.append(i-o)
+print (in_out)
+
+maximum_occupation = 0
+for i,o in stops:
+  if (i-o) > 0:
+    maximum_occupation += i-o
+  elif (i-o) < 0:
+    maximum_occupation = maximum_occupation
+  else:
+    break
+print (maximum_occupation)
+
+Ins = []
+Outs = []
+for i,o in stops:
+  Ins.append(i)
+  Outs.append(o)
+print (Ins)
+print (Outs)
+Average_Ins= sum(Ins) / len(Ins)
+print(Average_Ins)
+Average_Outs= sum(Outs) / len(Outs)
+print(Average_Outs)
+List = [10,14,13,16,11,14,10,15,14,15,10,15,7,11,5,7,4]
+print (sum(List) / len(List))
+
+import statistics
+Average = statistics.mean(List)
+print(Average)
+Standers_deviation = statistics.stdev(List)
+print (Standers_deviation)
+
+
+******************************************************************************
+
+Robin Hood
+-----------
+
+points = [(4, 5), (-0, 2), (4, 7), (1, -3), (3, -2), (4, 5), (3, 2), (5, 7), (-5, 7), (2, 2), (-4, 5), (0, -2), (-4, 7), (-1, 3), (-3, 2), (-4, -5), (-3, 2), (5, 7), (5, 7), (2, 2), (9, 9), (-8, -9)]
+
+A = set (points)
+Number = len(points) - len(A)
+print("Number of arrows that hit another: ", Number)
+B = list(A)
+
+Q1=[]
+Q2=[]
+Q3=[]
+Q4=[]
+N = []
+for x,y in points:
+  if x > 0 and y > 0:
+    Q1.append((x,y))
+  elif x < 0 and y > 0:
+    Q2.append((x,y))
+  elif x < 0 and y < 0:
+    Q3.append((x,y))
+  elif x > 0 and y < 0:
+    Q4.append((x,y))
+  elif x == 0 or y == 0:
+    N.append((x,y))
+print ("Arrows in quadrant Q1: ", len(Q1))
+print ("Arrows in quadrant Q2: ", len(Q2))
+print ("Arrows in quadrant Q3: ", len(Q3))
+print ("Arrows in quadrant Q4: ", len(Q4))
+print ("Arrows that do not belong to any quadrant: ", len(N))
+
+X = []
+O = []
+null = (0, 0)
+for (x,y) in B:
+  if (x,y) < null:
+    X.append((x,y))
+  elif (x,y) > null:
+    O.append((x,y))
+Z = [max(X), min(O)]
+Q = sum(Z[0])
+W = sum(Z[1])
+R = 0
+if -Q > W:
+  R = Q
+else:
+  R = W
+print("The closest arrow from the centre is:", R, "centimeters away from the centre.")
+
+L= []
+K= []
+for (x,y) in points:
+  if x == 9 or y ==9:
+    L.append((x,y))
+  elif x == 9 or y == -9:
+    L.append((x,y))
+  else:
+    K.append((x,y))
+print("The number of arrows that will not hit the target are:", len(L), "arrows")
+
+
+******************************************************************************
+
+Temperature Sensor
+-------------------
+
+temperatures_C = [33, 66, 65, 0, 59, 60, 62, 64, 70, 76, 80, 81, 80, 83, 90, 79, 61, 53, 50, 49, 53, 48, 45, 39]
+
+min_temp = min(temperatures_C)
+print("The minimum temperature of the day is:", min_temp, "degrees celsius")
+
+
+max_temp = max(temperatures_C)
+print("The maximum temperature of the day is:", max_temp, "degrees celsius")
+
+
+event1= []
+for i in temperatures_C:
+  if i >= 70:
+    event1.append(i)
+print ("The temperatures that are greater than or equal to 70 degrees celsius are:", event1)
+
+
+average_temp= sum(temperatures_C) / len(temperatures_C)
+print("The average temperature of the days is:", average_temp, "degrees celsius")
+
+
+
+temperatures_C.remove (0)
+temp_at3am= (temperatures_C[2] + temperatures_C [4]) / 2
+temperatures_C.insert(3, int(temp_at3am))
+print ("The updated temperatures after removing the sensor failure at 3am and replacing it with the estimate value:", temperatures_C)
+
+
+new_average_temp= sum(temperatures_C) / len(temperatures_C)
+print("The new average temperature of the days is after correcting the error at 3am is:", new_average_temp, "degrees celsius")
+
+
+temp_in_F= []
+F = 0
+for i in temperatures_C:
+  F = 1.8 * i + 32
+  temp_in_F.append(F)
+
+print ("Temperatures in Fahrenhiet for the US maintenance staff:", temp_in_F)
+
+
+H=[70,70,70,70]
+if event1 >= H:
+  print("First event has occured, system needs to be replaced.")
+if max(temperatures_C) > 80:
+  print("Second event has occured, system needs to be replaced.")
+if new_average_temp > 65:
+  print("Third event has occured, system needs to be replaced.")
+
+
+******************************************************************************
+
+Rock, Paper & Scissors
+-----------------------
+
+import random
+
+gestures = ("R", "P", "S")
+
+n_rounds = input ("How many rounds do you want to play? ")
+A = int(n_rounds)
+cpu_score = 0
+player_score = 0
+
+for i in range (A):
+  cpu_input = random.choice(gestures)
+  player_input=input("Enter your choice: R for (Rock), P for (paper) or S for (scissor): ")
+  if player_input not in gestures:
+    print("You chose a wrong input, please try again!")
+    player_input=input("Enter your choice: R for (Rock), P for (paper) or S for (scissor): ")
+
+  print ("You chose:", player_input)
+  print("The computer chose:", cpu_input)
+
+  if cpu_input == player_input:
+    cpu_score += 0
+    player_score += 0
+    print ("This round is a Tie")
+
+  if cpu_input == "P" and player_input == "S":
+    cpu_score += 0
+    player_score += 1
+    print ("You win this round!")
+
+  if cpu_input == "S" and player_input == "P":
+    cpu_score += 1
+    player_score += 0
+    print ("You lose this round!")
+
+  if cpu_input == "R" and player_input == "P":
+    cpu_score += 0
+    player_score += 1
+    print ("You win this round!")
+
+  if cpu_input == "P" and player_input == "R":
+    cpu_score += 1
+    player_score += 0
+    print ("You lose this round!")
+
+  if cpu_input == "S" and player_input == "R":
+    cpu_score += 0
+    player_score += 1
+    print ("You win this round!")
+
+  if cpu_input == "R" and player_input == "S":
+    cpu_score += 1
+    player_score += 0
+    print ("You lose this round!")
+
+  print ("The computer scored", cpu_score, "points so far.")
+  print ("You scored", player_score, "points so far.")
+
+if cpu_score > player_score:
+  print("You lost the game!")
+elif player_score > cpu_score:
+  print ("Hooray! You won.")
+else:
+  print ("This game is a tie!")
