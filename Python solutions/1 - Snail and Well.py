@@ -40,16 +40,15 @@ print("The snail is finally out after", days, "days.")
 a = [1, 2, 3, 4]
 for i in range(len(a)):
     a[i] += i
-print(a)
+# print(a)
 
 # THIS FINALLY SUMS, STORES THE VALUE AND SUMS THE NEXT NUMBER
 # IT GIVES ME THE RESULTS BACK IN AN INCREMENTAL LIST RATHER THAN A SIMPLE SUM
 x = [1, 2, 3, 4]
 y = [sum(x[:i+1]) for i in range(len(x))]
-print(y)
+# print(y)
 
 # BONUS Q2
-displacement = [x - 20 for x in advance_cm]
 print("Max. displacement:", (max(displacement[:6])))
 print("Min. displacement:", (min(displacement[:6])))
 
@@ -59,5 +58,4 @@ print("Average progress:", sum(total_progress)/len(total_progress))
 
 # BONUS Q4
 # I guess it is a sample and not population?
-progress_with_night_slide = [x + 20 for x in advance_cm]
-print("Standard deviation:", statistics.stdev(progress_with_night_slide))
+print("Standard deviation:", statistics.stdev(total_progress))
