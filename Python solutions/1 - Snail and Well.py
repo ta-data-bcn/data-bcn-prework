@@ -12,34 +12,26 @@ while snail_position < well_height:
 
 print("The snail is finally out after", days, "days.")
 
+
 # BONUS
-well_height = [125]
+
+# BONUS Q1
+well_height = 125
 advance_cm = [30, 21, 33, 77, 44, 45, 23, 45, 12, 34, 55]
 nightly_distance = 20
 displacement = [x - 20 for x in advance_cm]
-snail_position = [0]
-days = 0
-print(displacement)
-
-while sum(snail_position) < sum(well_height):
-    days += 1
-    snail_position = displacement  # fix this
-
-print("The snail is finally out after", days, "days.")
-
-
-# TESTING FOR BONUS Q1
-well_height = 125
-advance_cm = [30, 21, 33, 77, 44, 45, 23, 45, 12, 34, 55]
-displacement = [x - 20 for x in advance_cm]
-print(displacement)
 snail_position = 0
 days = 0
+print("Displacement:", displacement)
 
-while snail_position < well_height:
+displacement_sum = ds = [sum(displacement[:i+1]) for i in range(len(displacement))]
+print("Displacement sum:", ds)
+
+for i in range(11):
     days += 1
-    snail_position = 10 + 1 + 13 + 57 + 24 + 25
-    # this is still not working - can't figure it out
+    snail_position = ds[i]
+    if snail_position > well_height:
+        break
 
 print("The snail is finally out after", days, "days.")
 
@@ -57,17 +49,15 @@ y = [sum(x[:i+1]) for i in range(len(x))]
 print(y)
 
 # BONUS Q2
-advance_cm2 = [30, 21, 33, 77, 44, 45]
-displacement = [x - 20 for x in advance_cm2]
-print(max(displacement))
-print(min(displacement))
+displacement = [x - 20 for x in advance_cm]
+print("Max. displacement:", (max(displacement[:6])))
+print("Min. displacement:", (min(displacement[:6])))
 
 # BONUS Q3
-advance_cm = [30, 21, 33, 77, 44, 45, 23, 45, 12, 34, 55]
 total_progress = [x + 20 for x in advance_cm]
-print(sum(total_progress)/len(total_progress))
+print("Average progress:", sum(total_progress)/len(total_progress))
 
 # BONUS Q4
-advance_cm = [30, 21, 33, 77, 44, 45, 23, 45, 12, 34, 55]
+# I guess it is a sample and not population?
 progress_with_night_slide = [x + 20 for x in advance_cm]
-print(statistics.stdev(progress_with_night_slide))
+print("Standard deviation:", statistics.stdev(progress_with_night_slide))
