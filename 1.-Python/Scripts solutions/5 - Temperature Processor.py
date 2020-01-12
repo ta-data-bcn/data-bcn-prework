@@ -100,4 +100,9 @@ in Celsius:", statistics.pstdev(temperatures_C))
 print("Standard deviation of the temperature list in \
 Fahrenheit:", statistics.pstdev(temps_in_F))
 
-print(statistics.pstdev(temps_in_F)/statistics.pstdev(temperatures_C))
+print("The standard deviation in Fahrenheit is 1.8* higher than the \
+standard deviation in Celsius. We can verify that by dividing the SD in F by \
+the SD in C, which will gives us 1.8 as a result.")
+
+print("Result of dividing the SD in F by the SD in C:",
+      statistics.pstdev(temps_in_F)/statistics.pstdev(temperatures_C))
