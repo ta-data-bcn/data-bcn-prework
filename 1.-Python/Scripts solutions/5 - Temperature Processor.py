@@ -20,7 +20,7 @@ for i in temperatures_C:
     if i >= 70:
         tp70.append(i)
 
-# I wonder if it's ok to sort it, or if I should even just set it.
+
 tp70.sort()
 print("List of temperatures >= 70°C:", tp70)
 
@@ -61,14 +61,14 @@ else:
 # BONUS
 
 # Q1
-# Test 1
+# Test 1 - Also works
 """
-hours_temps_greater_70 = ht70 = []
+test = []
 
 for i in range(len(temperatures_C)):
     if temperatures_C[i] > 70:
-        ht70.append(i)
-print("Hours >70C with correct 'index':", ht70)
+        test.append(i)
+print("Test list of hours with temps > 70°C:", test)
 """
 
 # Test 2
@@ -80,8 +80,35 @@ for i, x in enumerate(temperatures_C):
 
 print("List of hours where the temperature is > 70°C:", ht70)
 
+
 # Q2
-print([i for i, e in enumerate(temperatures_C) if e == 76])
+# Interesting way to get the index of a value in temperatures_C list.
+# print([i for i, e in enumerate(temperatures_C) if e == 76])
+
+consecutive_hours = 0
+
+for i in range(len(ht70)):
+    if (ht70[i+1] == ht70[i]+1
+        and ht70[i+2] == ht70[i]+2
+        and ht70[i+3] == ht70[i]+3
+        and ht70[i+4] == ht70[i]+4
+            and ht70[i+5] == ht70[i]+5):
+        consecutive_hours = "Yes"
+        break
+    else:
+        consecutive_hours = "No"
+
+if consecutive_hours == "Yes":
+    print("The list has more than 4 consecutive hours.")
+else:
+    print("The list doesn't have more than 4 consecutive hours.")
+
+# Q3
+if consecutive_hours == "Yes" or max(temperatures_C) > 80 or avg_temp > 65:
+    print("The cooling system needs to be changed.")
+
+else:
+    print("The cooling system does not need to be changed.")
 
 
 # Q4
@@ -92,6 +119,7 @@ print("Average value of the Fahrenheit list:", sum(temps_in_F)/len(temps_in_F))
 
 print("The relation between both average values is that the average \
 in Fahrenheit is equal to 1.8 * the average value in Celsius + 32.")
+
 
 # Q5
 print("Standard deviation of the temperature list \
