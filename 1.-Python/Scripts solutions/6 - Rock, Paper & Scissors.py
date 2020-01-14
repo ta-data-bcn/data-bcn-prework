@@ -38,10 +38,14 @@ def player_gesture():
         else:
             continue
 
+    print(gesture)  # Is this necessary?
+
 
 player_gesture()
 
 # Q8
+
+# Can't get it to work. Tried many different ways.
 
 
 def round_winner():
