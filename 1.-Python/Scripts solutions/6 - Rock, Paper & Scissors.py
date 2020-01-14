@@ -28,8 +28,8 @@ computer_gesture()
 def player_gesture():
 
     while True:
-        gesture = input("Please choose between 'rock', 'paper' \
-        or 'scissors': ")
+        gesture = str(input("Please choose between 'rock', 'paper' \
+        or 'scissors': "))
 
         if gesture.lower() == "rock" or gesture.lower() == "paper" or \
                 gesture.lower() == "scissors":
@@ -46,9 +46,13 @@ player_gesture()
 
 def round_winner():
     if computer_gesture() == "rock" and player_gesture() == "paper":
-        print("comp won")
+        print("test 1")
+    elif computer_gesture() == "paper" and player_gesture() == "paper":
+        print("test 2")
+    elif computer_gesture() == "scissors" and player_gesture() == "paper":
+        print("test 3")
     else:
-        print("who knows")
+        print("still not working lol")
 
 
 round_winner()
