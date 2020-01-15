@@ -4,23 +4,25 @@ from random import choice
 gestures = ["rock", "paper", "scissors"]
 
 # Q3
-n_rounds = 0
+n_rounds = int(input("Please input an odd number of rounds to play: "))
 
 # Q4
-rounds_to_win = 0
+rounds_to_win = int((n_rounds / 2) + 1)
 
 # Q5
 cpu_score = 0
 player_score = 0
 
+
 # Q6
 
 
 def computer_gesture():
-    print(choice(gestures))
+    return choice(gestures)
 
 
-computer_gesture()
+comp_choice = computer_gesture()
+
 
 # Q7
 
@@ -28,35 +30,94 @@ computer_gesture()
 def player_gesture():
 
     while True:
-        gesture = str(input("Please choose between 'rock', 'paper' \
-        or 'scissors': "))
+        gesture = input("Please choose between 'rock', \
+        'paper' or 'scissors': ")
 
-        if gesture.lower() == "rock" or gesture.lower() == "paper" or \
-                gesture.lower() == "scissors":
+        if gesture.lower() == "rock" or gesture.lower() == "paper" or gesture.lower() == "scissors":
             break
 
         else:
             continue
 
-    print(gesture)  # Is this necessary?
+    return gesture
 
 
-player_gesture()
+player_choice = player_gesture()
+
 
 # Q8
 
-# Can't get it to work. Tried many different ways.
 
+def round_winner(comp_choice, player_choice):
 
-def round_winner():
-    if computer_gesture() == "rock" and player_gesture() == "paper":
-        print("test 1")
-    elif computer_gesture() == "paper" and player_gesture() == "paper":
-        print("test 2")
-    elif computer_gesture() == "scissors" and player_gesture() == "paper":
-        print("test 3")
+    if comp_choice == "rock" and player_choice == "paper":
+        return 2
+
+    elif comp_choice == "rock" and player_choice == "scissors":
+        return 1
+
+    elif comp_choice == "paper" and player_choice == "rock":
+        return 1
+
+    elif comp_choice == "paper" and player_choice == "scissors":
+        return 2
+
+    elif comp_choice == "scissors" and player_choice == "rock":
+        return 2
+
+    elif comp_choice == "scissors" and player_choice == "paper":
+        return 1
+
     else:
-        print("still not working lol")
+        return 0
 
 
-round_winner()
+who_won_round = round_winner(comp_choice, player_choice)
+
+
+# Q9
+
+
+def results_printer():
+
+    print(comp_choice)
+    print(player_choice)
+
+    if who_won_round == 1:
+        print("Computer won.")
+        global cpu_score
+        cpu_score += 1
+
+    if who_won_round == 2:
+        print("Player won.")
+        global player_score
+        player_score += 1
+
+    if who_won_round == 0:
+        print("Tie.")
+        cpu_score += 0
+        player_score += 0
+
+
+results_printer()
+
+
+# Q10
+
+round_counter = 0
+
+while (cpu_score != rounds_to_win or player_score != rounds_to_win) and round_counter != n_rounds:
+
+    player_choice = player_gesture()
+    comp_choice = computer_gesture()
+    results_printer()
+    round_counter += 1
+    print("Number of rounds played:", round_counter)
+
+
+# Q11
+
+if cpu_score > player_score:
+    print("The final winner is: The Computer")
+else:
+    print("The final winner is: The Player")
