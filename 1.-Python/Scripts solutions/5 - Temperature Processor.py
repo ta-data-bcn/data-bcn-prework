@@ -85,23 +85,40 @@ print("List of hours where the temperature is > 70°C:", ht70)
 # Interesting way to get the index of a value in temperatures_C list.
 # print([i for i, e in enumerate(temperatures_C) if e == 76])
 
-consecutive_hours = 0
-
 for i in range(len(ht70)):
-    if (ht70[i+1] == ht70[i]+1
-        and ht70[i+2] == ht70[i]+2
-        and ht70[i+3] == ht70[i]+3
-        and ht70[i+4] == ht70[i]+4
-            and ht70[i+5] == ht70[i]+5):
+
+    if (ht70[1] - ht70[0] == 1
+        and ht70[2] - ht70[1] == 1
+        and ht70[3] - ht70[2] == 1
+        and ht70[4] - ht70[3] == 1
+            and ht70[5] - ht70[4] == 1):
         consecutive_hours = "Yes"
-        break
+
     else:
         consecutive_hours = "No"
 
-if consecutive_hours == "Yes":
+if "Yes" in consecutive_hours:
     print("The list has more than 4 consecutive hours.")
 else:
     print("The list doesn't have more than 4 consecutive hours.")
+
+"""
+# I also thought about this. Is this better? Or is it incorrect?
+# I think it kinda makes sense?
+
+for i in range(len(ht70)):
+
+    if (ht70[i]+1 - ht70[i]) == 1:
+        consecutive_hours = "Yes"
+
+    else:
+        consecutive_hours = "No"
+
+if "Yes" in consecutive_hours:
+    print("The list has more than 4 consecutive hours.")
+else:
+    print("The list doesn't have more than 4 consecutive hours.")
+"""
 
 # Q3
 if consecutive_hours == "Yes" or max(temperatures_C) > 80 or avg_temp > 65:
