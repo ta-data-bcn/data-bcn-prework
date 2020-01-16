@@ -1,13 +1,42 @@
 from random import choice
 
+
 # Q2
 gestures = ["rock", "paper", "scissors"]
 
+
 # Q3
-n_rounds = int(input("Please input an odd number of rounds to play: "))
+
+def numb_rounds():
+
+    while True:
+        n_rounds = input("Please input an odd number of rounds to play: ")
+
+        try:
+
+            if int(n_rounds) % 2 != 0:
+                print("Got it.")
+                break
+
+            elif int(n_rounds) % 2 == 0:
+                print("This is an even number.")
+
+        except ValueError:
+            if isinstance(n_rounds, str) is True:
+                print("This is not a number.")
+
+    return int(n_rounds)
+
+
+n_rounds = numb_rounds()
+
 
 # Q4
 rounds_to_win = int((n_rounds / 2) + 1)
+
+print("The player needs to win " + str(rounds_to_win) + " rounds to win \
+the game.")
+
 
 # Q5
 cpu_score = 0
@@ -15,7 +44,6 @@ player_score = 0
 
 
 # Q6
-
 
 def computer_gesture():
     return choice(gestures)
@@ -25,7 +53,6 @@ comp_choice = computer_gesture()
 
 
 # Q7
-
 
 def player_gesture():
 
@@ -46,7 +73,6 @@ player_choice = player_gesture()
 
 
 # Q8
-
 
 def round_winner(comp_choice, player_choice):
 
@@ -76,7 +102,6 @@ who_won_round = round_winner(comp_choice, player_choice)
 
 
 # Q9
-
 
 def results_printer():
 
