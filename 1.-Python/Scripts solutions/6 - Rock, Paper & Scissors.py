@@ -103,7 +103,7 @@ who_won_round = round_winner(comp_choice, player_choice)
 
 # Q9
 
-def results_printer():
+def results_printer(who_won_round, comp_choice, player_choice):
 
     print(comp_choice)
     print(player_choice)
@@ -112,37 +112,68 @@ def results_printer():
         print("Computer won.")
         global cpu_score
         cpu_score += 1
+        return cpu_score
 
-    if who_won_round == 2:
+    elif who_won_round == 2:
         print("Player won.")
         global player_score
         player_score += 1
+        return player_score
 
-    if who_won_round == 0:
+    elif who_won_round == 0:
         print("Tie.")
         cpu_score += 0
         player_score += 0
+        return cpu_score and player_score
 
 
-results_printer()
+results = results_printer(who_won_round, comp_choice, player_choice)
 
 
 # Q10
 
-round_counter = 0
+# I think now it is working 100% properly!!!
 
-while (cpu_score != rounds_to_win or player_score != rounds_to_win) and round_counter != n_rounds:
+def game():
 
-    player_choice = player_gesture()
-    comp_choice = computer_gesture()
-    results_printer()
-    round_counter += 1
-    print("Number of rounds played:", round_counter)
+    round_counter = 0
+    """
+    Had to set the cpu and player scores back to 0 here,
+    otherwise they would assume previous values from the first time
+    I had to run everything
+    """
+    global cpu_score
+    cpu_score = 0
+    global player_score
+    player_score = 0
+
+    while (cpu_score != rounds_to_win or player_score != rounds_to_win) and round_counter != n_rounds:
+
+        comp_choice = computer_gesture()
+        player_choice = player_gesture()
+        who_won_round = round_winner(comp_choice, player_choice)
+        results = results_printer(who_won_round, comp_choice, player_choice)
+        round_counter += 1
+        print("Number of rounds played:", round_counter)
+
+
+game()
 
 
 # Q11
+"""
+Added these print statements to help me check whether or not
+previous wins were being computed, and they were.
+So that's why I set the global scores back to 0 in the 'game' function above
+"""
+print("Computer score:", cpu_score)
+print("Player score:", player_score)
 
 if cpu_score > player_score:
     print("The final winner is: The Computer")
+
+elif cpu_score == player_score:  # added possibility of game ending in a tie.
+    print("The game ended in a tie.")
+
 else:
     print("The final winner is: The Player")
